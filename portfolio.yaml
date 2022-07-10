@@ -29,7 +29,7 @@ spec:
   # it require a nodePort
   type: NodePort
   selector:
-    app: tweetrending-ui
+    app: portfolio
   ports:
     - protocol: TCP
       port: 80
