@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portfolio-deployment
+  labels:
+    app: portfolio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: portfolio
+  template:
+    metadata:
+      labels:
+        app: portfolio
+    spec:
+      containers:
+      - name: portfolio
+        image: yacincheffai/portfolio:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: portfolio-service
+spec:
+  # default ClusterIP wich is an internal service type, NodePort is an external Service type
+  # it require a nodePort
+  type: NodePort
+  selector:
+    app: tweetrending-ui
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      # range between 30000 and 32767
+      nodePort: 30100
