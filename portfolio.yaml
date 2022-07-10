@@ -35,4 +35,4 @@ spec:
       port: 80
       targetPort: 80
       # range between 30000 and 32767
-      nodePort: 30100
+      nodePort: 30102
